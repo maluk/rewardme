@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Accept a card payment</title>
+    <meta name="description" content="A demo of a card payment on Stripe"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" href="/css/global.css"/>
+    <script src="https://js.stripe.com/v3/"></script>
+<!--    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>-->
+    <script src="/js/client.js" defer></script>
+    <link href="/webjars/bootstrap/5.0.0-beta3/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/webjars/bootstrap/5.0.0-beta3/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+    </button>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <form id="payment-form">
+                <div>
+                    <input id="example1-email" data-tid="elements_examples.form.email_placeholder" type="email" placeholder="E-mail" required="" autocomplete="email">
+                </div>
+                <div id="card-element"><!--Stripe.js injects the Card Element--></div>
+                <button id="submit">
+                    <div class="spinner hidden" id="spinner"></div>
+                    <span id="button-text">Pay now</span>
+                </button>
+                <p id="card-error" role="alert"></p>
+                <p class="result-message hidden">
+                    Payment succeeded, see the result in your
+                    <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

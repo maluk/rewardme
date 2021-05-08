@@ -1,0 +1,66 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.2.5.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+}
+
+sourceCompatibility = 1.11
+targetCompatibility = 1.11
+
+group 'com.rewardme'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.session:spring-session-bom:Corn-SR2'
+    }
+}
+
+dependencies {
+    // spring
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+//    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
+    implementation 'com.stripe:stripe-java:20.50.0'
+
+    // session
+//    compile 'org.springframework.session:spring-session-core'
+//    compile 'org.springframework.session:spring-session-jdbc'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+//    compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.9.0'
+
+    // db
+//    implementation 'org.postgresql:postgresql'
+
+    // fronend
+    compile 'org.webjars:bootstrap:5.0.0-beta3'
+//    compile group: 'org.webjars', name: 'webjars-locator', version: '0.40'
+    compile group: 'org.webjars', name: 'jquery', version: '3.5.1'
+
+    // test
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,193 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.83.1">
+    <title>Starter Template · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/starter-template/">
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="/webjars/bootstrap/5.0.0-beta3/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/webjars/bootstrap/5.0.0-beta3/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+    <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
+    <meta name="theme-color" content="#7952b3">
+
+    <script src="/js/client.js" defer></script>
+    <link rel="stylesheet" href="/css/global.css"/>
+
+    <style>
+      .support-section {
+        display: none;
+      }
+    .support-thankyou {
+        display: none;
+      }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+
+        section.cards .card {
+            width: 100%
+            display: block
+            margin: 10px 0 0 0 !important
+            padding: 0
+      }
+      .popup {
+        width: 280px
+      }
+    }
+
+    .popup {
+      width: 380px
+      height: 180px
+      background: var(--clr4)
+      bottom: 20px
+      left: -380px
+      position: fixed
+      border-radius: 5px
+      box-shadow: 0px 25px 10px -15px rgba(0, 0, 0, 0.05)
+      transition: 0.5s
+      z-index: 999
+    }
+
+    </style>
+
+
+    <script>
+        function getCookie(key) {
+            var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+            return keyValue ? keyValue[2] : null;
+        }
+
+        $(document).ready(function() {
+
+          $(window).scroll(function() {
+              if ($(window).scrollTop() >= ($(document).height() - $(window).height())) {
+                $('.popup').css( "left", "20px" )
+              }else{
+                $('.popup').css( "left", "-380px" );
+            }
+          });
+
+          $('.close').click(function(){
+            $('.popup').hide();
+          });
+
+            $('.support-button').on('click', function(event) {
+                var isReturned = getCookie('returned');
+                if (isReturned) {
+                    $('.support-thankyou').fadeIn();
+                    $('.support-buttons').hide();
+                } else {
+                    $('.support-section').show();
+                    $('.support-buttons').hide();
+                }
+            });
+        });
+    </script>
+
+</head>
+<body>
+
+<div class="col-lg-8 mx-auto p-3 py-md-5">
+    <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path></svg>
+            <span class="fs-4">The Best News Website Ever</span>
+        </a>
+    </header>
+
+    <main>
+        <h4>The digital currencies that matter</h4>
+        <img src="/img/20210508_LDD001_0.webp" class="img-thumbnail" alt="Crypto">
+        <p class="fs-5 col-md-16">Technological change is upending finance. Bitcoin has gone from being an obsession of anarchists to a $1trn asset class that many fund managers insist belongs in any balanced portfolio. Swarms of digital day-traders have become a force on Wall Street. PayPal has 392m users, a sign that America is catching up with China’s digital-payments giants. Yet, as our special report explains, the least noticed disruption on the frontier between technology and finance may end up as the most revolutionary: the creation of government digital currencies, which typically aim to let people deposit funds directly with a central bank, bypassing conventional lenders.<p>
+        <p class="fs-5 col-md-16">These “govcoins” are a new incarnation of money. They promise to make finance work better but also to shift power from individuals to the state, alter geopolitics and change how capital is allocated. They are to be treated with optimism, and humility.<p>
+        <p class="fs-5 col-md-16">A decade or so ago, amid the wreckage of Lehman Brothers, Paul Volcker, a former head of the Federal Reserve, grumbled that banking’s last useful innovation was the atm. Since the crisis, the industry has raised its game. Banks have modernised their creaking it systems. Entrepreneurs have built an experimental world of “decentralised finance”, of which bitcoin is the most famous part and which contains a riot of tokens, databases and conduits that interact to varying degrees with traditional finance. Meanwhile, financial “platform” firms now have over 3bn customers who use e-wallets and payments apps. Alongside PayPal are other specialists such as Ant Group, Grab and Mercado Pago, established firms such as Visa, and Silicon Valley wannabes such as Facebook.<p>
+        <p class="fs-5 col-md-16">Government or central-bank digital currencies are the next step but they come with a twist, because they would centralise power in the state rather than spread it through networks or give it to private monopolies. The idea behind them is simple. Instead of holding an account with a retail bank, you would do so direct with a central bank through an interface resembling apps such as Alipay or Venmo. Rather than writing cheques or paying online with a card, you could use the central bank’s cheap plumbing. And your money would be guaranteed by the full faith of the state, not a fallible bank. Want to buy a pizza or help a broke sibling? No need to deal with Citigroup’s call centre or pay Mastercard’s fees: the Bank of England and the Fed are at your service.<p>
+        <p class="fs-5 col-md-16">This metamorphosis of central banks from the aristocrats of finance to its labourers sounds far-fetched, but it is under way. Over 50 monetary authorities, representing the bulk of global gdp, are exploring digital currencies. The Bahamas has issued digital money. China has rolled out its e-yuan pilot to over 500,000 people. The eu wants a virtual euro by 2025, Britain has launched a task-force, and America, the world’s financial hegemon, is building a hypothetical e-dollar.<p>
+        <p class="fs-5 col-md-16">One motivation for governments and central banks is a fear of losing control. Today central banks harness the banking system to amplify monetary policy. If payments, deposits and loans migrate from banks into privately run digital realms, central banks will struggle to manage the economic cycle and inject funds into the system during a crisis. Unsupervised private networks could become a Wild West of fraud and privacy abuses.<p>
+        <p class="fs-5 col-md-16">The other motivation is the promise of a better financial system. Ideally money provides a reliable store of value, a stable unit of account and an efficient means of payment. Today’s money gets mixed marks. Uninsured depositors can suffer if banks fail, bitcoin is not widely accepted and credit cards are expensive. Government e-currencies would score highly, since they are state-guaranteed and use a cheap, central payments hub.<p>
+        <p class="fs-5 col-md-16">As a result, govcoins could cut the operating expenses of the global financial industry, which amount to over $350 a year for every person on Earth. That could make finance accessible for the 1.7bn people who lack bank accounts. Government digital currencies could also expand governments’ toolkits by letting them make instant payments to citizens and cut interest rates below zero. For ordinary users, the appeal of a free, safe, instant, universal means of payment is obvious.<p>
+        <p class="fs-5 col-md-16">It is this appeal, though, that creates dangers. Unconstrained, govcoins could fast become a dominant force in finance, particularly if network effects made it hard for people to opt out. They could destabilise banks, because if most people and firms stashed their cash at the central banks, lenders would have to find other sources of funding with which to back their loans.<p>
+        <p class="fs-5 col-md-16">If retail banks were sucked dry of funding, someone else would have to do the lending that fuels business creation. This raises the queasy prospect of bureaucrats influencing credit allocation. In a crisis, a digital stampede of savers to the central bank could cause bank runs.<p>
+        <p class="fs-5 col-md-16">Once ascendant, govcoins could become panopticons for the state to control citizens: think of instant e-fines for bad behaviour. They could alter geopolitics, too, by providing a conduit for cross-border payments and alternatives to the dollar, the world’s reserve currency and a linchpin of American influence. The greenback’s reign is based partly on America’s open capital markets and property rights, which China cannot rival. But it also relies on old payments systems, invoicing conventions and inertia—making it ripe for disruption. Small countries fear that, instead of using local money, people might switch to foreign e-currencies, causing chaos at home.<p>
+        <p class="fs-5 col-md-16">Such a vast spectrum of opportunities and dangers is daunting. It is revealing that China’s autocrats, who value control above all else, are limiting the size of the e-yuan and clamping down on private platforms such as Ant. Open societies should also proceed cautiously by, say, capping digital-currency accounts.<p>
+        <p class="fs-5 col-md-16">Governments and financial firms need to prepare for a long-term shift in how money works, as momentous as the leap to metallic coins or payment cards. That means beefing up privacy laws, reforming how central banks are run and preparing retail banks for a more peripheral role. State digital currencies are the next great experiment in finance, and they promise to be a lot more consequential than the humble atm.<p>
+
+    </main>
+    <footer class="pt-2 my-5 text-muted border-top">
+        <div class="container p-4">
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-12 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Like the article? Support the author!</h5>
+                    <div class="support-section" align="center">
+                        <form id="payment-form">
+                            <div id="card-element"><!--Stripe.js injects the Card Element--></div>
+                            <button id="submit" class="payment-button">
+                                <div class="spinner hidden" id="spinner"></div>
+                                <span id="button-text">Pay now</span>
+                            </button>
+                            <p id="card-error" role="alert"></p>
+                            <p class="result-message hidden">
+                                Payment succeeded, see the result in your
+                                <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+                            </p>
+                        </form>
+                    </div>
+
+                    <div class="support-buttons pb-5">
+                    <p>
+                        By donating small amount you are showing you support to the the author. Because most of your donation goes directly to the author, it encourages author to write more often and more exciting articles.
+                    </p>
+
+                    <button type="button" class="btn btn-light support-button">&nbsp;&nbsp;&nbsp;$1&nbsp;&nbsp;&nbsp;</button>
+                    <button type="button" class="btn btn-light support-button">&nbsp;&nbsp;&nbsp;$3&nbsp;&nbsp;&nbsp;</button>
+                    <button type="button" class="btn btn-light support-button">&nbsp;&nbsp;&nbsp;$5&nbsp;&nbsp;&nbsp;</button>
+                    </div>
+
+                    <div class="support-thankyou p-5" align="center">
+                    <p>
+                        Thank you!
+                    </p>
+                    </div>
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+
+        Created by the Bootstrap team &middot; &copy; 2021
+    </footer>
+</div>
+
+
+</body>
+</html>
