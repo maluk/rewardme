@@ -32,8 +32,8 @@ dependencies {
     // spring
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-//    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-//    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
     implementation 'com.stripe:stripe-java:20.50.0'
@@ -48,6 +48,7 @@ dependencies {
 
     // db
 //    implementation 'org.postgresql:postgresql'
+    implementation 'com.h2database:h2'
 
     // fronend
     compile 'org.webjars:bootstrap:5.0.0-beta3'

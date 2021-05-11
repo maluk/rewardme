@@ -20,4 +20,9 @@ public class TestController {
     public String post(Model model) {
         return "post";
     }
+
+    @GetMapping("/post2")
+    public String post2(Model model) {
+        return "post2";
+    }
 }

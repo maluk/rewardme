@@ -17,9 +17,9 @@
     <link href="/webjars/bootstrap/5.0.0-beta3/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="/webjars/bootstrap/5.0.0-beta3/js/bootstrap.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<!--    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>-->
 
-    <script src="https://js.stripe.com/v3/"></script>
+<!--    <script src="https://js.stripe.com/v3/"></script>-->
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -29,7 +29,7 @@
     <link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
     <meta name="theme-color" content="#7952b3">
 
-    <script src="/js/client.js" defer></script>
+<!--    <script src="/js/client.js" defer></script>-->
     <link rel="stylesheet" href="/css/global.css"/>
 
     <style>
@@ -79,40 +79,40 @@
     </style>
 
 
-    <script>
-        function getCookie(key) {
-            var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
-            return keyValue ? keyValue[2] : null;
-        }
+<!--    <script>-->
+<!--        function getCookie(key) {-->
+<!--            var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');-->
+<!--            return keyValue ? keyValue[2] : null;-->
+<!--        }-->
 
-        $(document).ready(function() {
+<!--        $(document).ready(function() {-->
 
-          $(window).scroll(function() {
-              if ($(window).scrollTop() >= ($(document).height() - $(window).height())) {
-                $('.popup').css( "left", "20px" )
-              }else{
-                $('.popup').css( "left", "-380px" );
-            }
-          });
+<!--          $(window).scroll(function() {-->
+<!--              if ($(window).scrollTop() >= ($(document).height() - $(window).height())) {-->
+<!--                $('.popup').css( "left", "20px" )-->
+<!--              }else{-->
+<!--                $('.popup').css( "left", "-380px" );-->
+<!--            }-->
+<!--          });-->
 
-          $('.close').click(function(){
-            $('.popup').hide();
-          });
+<!--          $('.close').click(function(){-->
+<!--            $('.popup').hide();-->
+<!--          });-->
 
-            $('.support-button').on('click', function(event) {
-                var isReturned = getCookie('returned');
-                if (isReturned) {
-                    $('.support-thankyou').fadeIn();
-                    $('.support-buttons').hide();
-                } else {
-                    paymentIntent();
-                    $('#button-text').text('Pay ' + this.innerText.trim());
-                    $('.support-section').show();
-                    $('.support-buttons').hide();
-                }
-            });
-        });
-    </script>
+<!--            $('.support-button').on('click', function(event) {-->
+<!--                var isReturned = getCookie('returned');-->
+<!--                if (isReturned) {-->
+<!--                    $('.support-thankyou').fadeIn();-->
+<!--                    $('.support-buttons').hide();-->
+<!--                } else {-->
+<!--                    paymentIntent();-->
+<!--                    $('#button-text').text('Pay ' + this.innerText.trim());-->
+<!--                    $('.support-section').show();-->
+<!--                    $('.support-buttons').hide();-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+<!--    </script>-->
 
 </head>
 <body>
@@ -144,52 +144,34 @@
 
     </main>
     <footer class="pt-2 my-5 text-muted border-top">
-        <div class="container p-4">
-            <!--Grid row-->
-            <div class="row">
-                <!--Grid column-->
-                <div class="col-lg-12 col-md-12 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Like the article? Support the author!</h5>
-                    <div class="support-section" align="center">
-                        <form id="payment-form">
-                            <div id="card-element"><!--Stripe.js injects the Card Element--></div>
-                            <button id="submit" class="payment-button">
-                                <div class="spinner hidden" id="spinner"></div>
-                                <span id="button-text">Pay now</span>
-                            </button>
-                            <p id="card-error" role="alert"></p>
-                            <p class="result-message hidden">
-                                Payment succeeded, see the result in your
-                                <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
-                            </p>
-                        </form>
-                    </div>
-
-                    <div class="support-buttons pb-5">
-                    <p>
-                        By donating small amount you are showing you support to the the author. Because most of your donation goes directly to the author, it encourages author to write more often and more exciting articles.
-                    </p>
-
-                    <button type="button" class="btn btn-light support-button">&nbsp;&nbsp;&nbsp;$1&nbsp;&nbsp;&nbsp;</button>
-                    <button type="button" class="btn btn-light support-button">&nbsp;&nbsp;&nbsp;$3&nbsp;&nbsp;&nbsp;</button>
-                    <button type="button" class="btn btn-light support-button">&nbsp;&nbsp;&nbsp;$5&nbsp;&nbsp;&nbsp;</button>
-                    </div>
-
-                    <div class="support-thankyou p-5" align="center">
-                    <p>
-                        Thank you!
-                    </p>
-                    </div>
-                </div>
-                <!--Grid column-->
-            </div>
-            <!--Grid row-->
-        </div>
 
         Created by the Bootstrap team &middot; &copy; 2021
     </footer>
 </div>
 
+<div style="position: fixed; z-index:99999; left: 0px; top: 60%;">
+    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" style="padding: 0px; border: 0px">
+        <img src="/img/reward.png"/>
+    </button>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Give Reward</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <iframe src="/payment/stripe-payment?host=pravda&creator=dima" title="description" width="460" height="280"></iframe>
+            </div>
+<!--            <div class="modal-footer">-->
+<!--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--                <button type="button" class="btn btn-primary">Save changes</button>-->
+<!--            </div>-->
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

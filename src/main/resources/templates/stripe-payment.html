@@ -1,0 +1,146 @@
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/webjars/bootstrap/5.0.0-beta3/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/webjars/bootstrap/5.0.0-beta3/js/bootstrap.min.js"></script>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="/js/client.js" defer></script>
+    <link rel="stylesheet" href="/css/global.css"/>
+
+    <style>
+      .support-section {
+        display: none;
+      }
+    .support-thankyou {
+        display: none;
+      }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+
+        section.cards .card {
+            width: 100%
+            display: block
+            margin: 10px 0 0 0 !important
+            padding: 0
+      }
+      .popup {
+        width: 280px
+      }
+    }
+
+    .popup {
+      width: 380px
+      height: 180px
+      background: var(--clr4)
+      bottom: 20px
+      left: -380px
+      position: fixed
+      border-radius: 5px
+      box-shadow: 0px 25px 10px -15px rgba(0, 0, 0, 0.05)
+      transition: 0.5s
+      z-index: 999
+    }
+
+    </style>
+
+
+    <script>
+        function getCookie(key) {
+            var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+            return keyValue ? keyValue[2] : null;
+        }
+
+        $(document).ready(function() {
+
+          $(window).scroll(function() {
+              if ($(window).scrollTop() >= ($(document).height() - $(window).height())) {
+                $('.popup').css( "left", "20px" )
+              }else{
+                $('.popup').css( "left", "-380px" );
+            }
+          });
+
+          $('.close').click(function(){
+            $('.popup').hide();
+          });
+
+            $('.support-button').on('click', function(event) {
+                var contributor = getCookie('contributor');
+                var host = $('#host').val();
+                var creator = $('#creator').val();
+                var amount = this.innerText.trim().replace('$', '');
+                if (contributor) {
+                    paymentRecurringIntent(host, creator, amount, contributor);
+                    $('.support-thankyou').fadeIn();
+                    $('.support-buttons').hide();
+                } else {
+                    paymentIntent(host, creator, amount);
+                    $('#button-text').text('Pay ' + this.innerText.trim());
+                    $('.support-section').show();
+                    $('.support-buttons').hide();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+
+<div class="container p-4">
+    <!--Grid row-->
+    <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-12 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Like the article? Support the author!</h5>
+            <div class="support-section" align="center">
+                <form id="payment-form">
+                    <div id="card-element"><!--Stripe.js injects the Card Element--></div>
+                    <button id="submit" class="payment-button">
+                        <div class="spinner hidden" id="spinner"></div>
+                        <span id="button-text">Pay now</span>
+                    </button>
+                    <p id="card-error" role="alert"></p>
+                    <p class="result-message hidden">
+                        Payment succeeded, you can close the page
+                    </p>
+                </form>
+            </div>
+
+            <div class="support-buttons">
+                <p>
+                    By donating small amount you are showing you support to the the author. Because most of your donation goes directly to the author, it encourages author to write more often and more exciting articles.
+                </p>
+
+                <input type="hidden" id="host" name="host" th:value="${host}">
+                <input type="hidden" id="creator" name="creator" th:value="${creator}">
+
+                <button type="button" class="btn btn-light support-button">&nbsp;&nbsp;&nbsp;$1&nbsp;&nbsp;&nbsp;</button>
+                <button type="button" class="btn btn-light support-button">&nbsp;&nbsp;&nbsp;$3&nbsp;&nbsp;&nbsp;</button>
+                <button type="button" class="btn btn-light support-button">&nbsp;&nbsp;&nbsp;$5&nbsp;&nbsp;&nbsp;</button>
+            </div>
+
+            <div class="support-thankyou p-5" align="center">
+                <p>
+                    Thank you!
+                </p>
+            </div>
+        </div>
+        <!--Grid column-->
+    </div>
+    <!--Grid row-->
+</div>
+
+</body>
+</html>
